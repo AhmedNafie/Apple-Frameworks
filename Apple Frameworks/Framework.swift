@@ -5,8 +5,10 @@
 //  Created by Ahmed Nafie on 18/11/2024.
 //
 
-struct Framework {
-    
+import Foundation
+
+struct Framework: Hashable, Identifiable {
+    let id = UUID()
     let name: String
     let imageName: String
     let urlString: String
