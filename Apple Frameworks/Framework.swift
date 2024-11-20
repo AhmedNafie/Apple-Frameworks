@@ -16,7 +16,6 @@ struct Framework: Hashable, Identifiable {
 }
 
 struct MockData {
-    
     static let sampleFramework = Framework(name: "ARKit",
                                            imageName: "arkit",
                                            urlString: "https://developer.apple.com/augmented-reality/arkit",
@@ -88,7 +87,7 @@ struct MockData {
                   urlString: "https://developer.apple.com/xcode/swiftui",
                   description: "SwiftUI is an innovative, exceptionally simple way to build user interfaces across all Apple platforms with the power of Swift. Build user interfaces for any Apple device using just one set of tools and APIs.\n\nWith a declarative Swift syntax that’s easy to read and natural to write, SwiftUI works seamlessly with new Xcode design tools to keep your code and design perfectly in sync. Automatic support for Dynamic Type, Dark Mode, localization, and accessibility means your first line of SwiftUI code is already the most powerful UI code you’ve ever written."),
         
-        Framework(name: "Test Flight",
+        Framework(name: "TestFlight",
                   imageName: "test-flight",
                   urlString: "https://developer.apple.com/testflight",
                   description: "TestFlight makes it easy to invite users to test your apps and app clip experiences and collect valuable feedback before releasing your apps on the App Store.\n\nYou can invite up to 10,000 testers using just their email address or by sharing a public link."),
