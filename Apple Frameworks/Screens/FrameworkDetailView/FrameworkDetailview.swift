@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct FrameworkDetailview: View {
-    let framework: Framework
-    @Binding var isShowingFrameworkDetailview: Bool
-    @State private var isShowingSafariView = false
-
+    @ObservedObject var viewModel: FrameworkDetailViewModel
     var body: some View {
-
         VStack {
             HStack {
                 Spacer()
                 Button {
-                    isShowingFrameworkDetailview = false
+                    viewModel.isShowingFrameworkDetailview.wrappedValue = false
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundStyle(Color(.label))
@@ -28,26 +24,25 @@ struct FrameworkDetailview: View {
             }
             .padding()
             Spacer()
-            FrameworkTitleView(framework: framework)
+            FrameworkTitleView(framework: viewModel.framework)
             
-            Text(framework.description)
+            Text(viewModel.framework.description)
                 .font(.body)
                 .padding()
             Spacer()
             Button {
-                isShowingSafariView = true
+                viewModel.isShowingSafariView = true
             } label: {
                 FrameworkButton(title: "Learn More")
             }
             
         }
-        .sheet(isPresented: $isShowingSafariView, content: {
-            SafariView(url: URL(string: framework.urlString) ?? URL(string: "www.apple.com")!)
+        .sheet(isPresented: $viewModel.isShowingSafariView, content: {
+            SafariView(url: URL(string: viewModel.framework.urlString) ?? URL(string: "www.apple.com")!)
         })
     }
 }
 
 #Preview {
-    FrameworkDetailview(framework: MockData.sampleFramework, isShowingFrameworkDetailview: .constant(false))
-        .preferredColorScheme(.dark)
+    FrameworkDetailview(viewModel: FrameworkDetailViewModel(framework: MockData.sampleFramework, isShowingFrameworkDetailview: .constant(false)))
 }
