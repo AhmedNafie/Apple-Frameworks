@@ -23,23 +23,21 @@ struct FrameworkDetailview: View {
                 }
             }
             .padding()
+            
             Spacer()
+            
             FrameworkTitleView(framework: viewModel.framework)
             
             Text(viewModel.framework.description)
                 .font(.body)
                 .padding()
+            
             Spacer()
-            Button {
-                viewModel.isShowingSafariView = true
-            } label: {
+            
+            Link(destination: URL(string: viewModel.framework.urlString) ?? URL(string: "www.apple.com")!) {
                 FrameworkButton(title: "Learn More")
             }
-            
         }
-        .sheet(isPresented: $viewModel.isShowingSafariView, content: {
-            SafariView(url: URL(string: viewModel.framework.urlString) ?? URL(string: "www.apple.com")!)
-        })
     }
 }
 
